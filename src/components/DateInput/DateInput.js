@@ -4,7 +4,7 @@ import {Calendar} from 'react-calendar';
 import calendarIcon from '../../assets/Shape.png';
 import 'react-calendar/dist/Calendar.css';
 import { useState } from 'react';
-import { setEndDate, setStartDate, toggleStartCalendar, toggleEndCalendar } from '../../store/reducers/car.reducer';
+import { setEndDate, setStartDate, toggleStartCalendar, toggleEndCalendar, turnOnButton } from '../../store/reducers/car.reducer';
 
 export const DateInput = () => {
   const dispatch = useDispatch();
@@ -20,17 +20,28 @@ export const DateInput = () => {
   }
 
   const handleChangeStartDate = (e) => {
-    const dateText = (e.toLocaleString('lv-LV', {timezone: 'UTC'})).slice(0, 10);
-    setStartValue(dateText.split('.').reverse().join('-'));
-    const stateValue = startValue + 'T12:17:21Z';
+    let dateText = (e.toLocaleString('lv-LV', {timezone: 'UTC'})).slice(0, 10);
+    const dates = dateText.split('.');
+    if (dates[0].length === 1) {
+      dates[0] = 0 + dates[0];
+    }
+    dateText = dates[2] + '-' + dates[1] + '-' + dates[0];
+    setStartValue(dateText);
+    const stateValue = dateText + 'T12:17:21Z';
+    console.log(stateValue);
     dispatch(setStartDate(stateValue));
     handleStartCalendarOpen();
   }
 
   const handleChangeEndDate = (e) => {
-    const dateText = (e.toLocaleString('lv-LV', {timezone: 'UTC'})).slice(0, 10);
-    setEndValue(dateText.split('.').reverse().join('-'));
-    const stateValue = endValue + 'T12:17:21Z';
+    let dateText = (e.toLocaleString('lv-LV', {timezone: 'UTC'})).slice(0, 10);
+    const dates = dateText.split('.');
+    if (dates[0].length === 1) {
+      dates[0] = 0 + dates[0];
+    }
+    dateText = dates[2] + '-' + dates[1] + '-' + dates[0];
+    setEndValue(dateText);
+    const stateValue = dateText + 'T12:17:21Z';
     dispatch(setEndDate(stateValue));
     handleEndCalendarOpen();
   }

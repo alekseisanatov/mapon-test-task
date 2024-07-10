@@ -17,7 +17,7 @@ export const CarInput = () => {
 
   const handleActiveCar = (e) => {
     setValue(e.target.value);
-    dispatch(setActiveCar(value))
+    dispatch(setActiveCar(e.target.value))
   }
 
   return (

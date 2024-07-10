@@ -7,15 +7,21 @@ import GoogleApi from '../GoogleAPI/GoogleAPI';
 import { fetchRouteData } from '../../store/reducers/car.reducer';
 import { toggleGoogleMap, countDistance, restartDistanceCount, setCoord, clearCoords } from '../../store/reducers/car.reducer';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
 export const VehicleForm = () => {
   const cars = useSelector((state) => state.cars);
   const isGoogleOpen = cars.isGoogleMapOpen;
   const dispatch = useDispatch();
   const filteredRoutes = [];
-  console.log(cars);
+  const [isErrorActive, setErrorActive] = useState(false);
 
   const handleGenerateRequest = () => {
+    if (cars.endDate === '' || cars.activeCarId === '') {
+      setErrorActive(true);
+      return;
+    };
+    setErrorActive(false);
     dispatch(clearCoords());
     dispatch(toggleGoogleMap());
     dispatch(fetchRouteData())
@@ -44,6 +50,7 @@ export const VehicleForm = () => {
 
   return (
     <div className={`form ${isGoogleOpen ? 'form-active' : ''}`}>
+      <div className={`form__error ${isErrorActive ? '' : 'hidden'}`}>Fill all the field</div>
       <h2 className="form__title">Route report</h2>
       <CarInput />
       <DateInput />
