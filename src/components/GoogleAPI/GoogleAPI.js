@@ -8,8 +8,6 @@ function GoogleApi({isOpen}) {
   const cars = useSelector((state) => state.cars);
   const coords = cars.startCoords;
 
-  console.log(coords);
-
   return (
     <APIProvider apiKey={GOOGLE_API_KEY}>
       <Map className={`form__map ${isOpen ? '' : 'hidden'}`} defaultCenter={position} defaultZoom={10}>
