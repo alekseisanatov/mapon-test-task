@@ -1,0 +1,21 @@
+.car-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  &__select {
+    width: 380px;
+    font-size: 14px;
+    line-height: 19px;
+    padding: 6px 10px;
+    border: 1px solid #DCDEE0;
+    border-radius: 5px;
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  &__label-span {
+    color: red;
+  }
+}

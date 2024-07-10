@@ -1,20 +1,12 @@
-import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-// import { fetchData } from './store/reducers/user.reducer';
-// import { useDispatch } from 'react-redux';
+import maponLogo from './assets/mapon-colour@2x.png';
+import { VehicleForm } from './components/form/VehicleForm';
 
 function App() {
-  // const dispatch = useDispatch();
-
-  // dispatch(fetchData())
-  //   .unwrap()
-  //   .then((data) => {console.log(data)})
   return (
-    <div className="App">
-      App
-      <Routes>
-        <Route></Route>
-      </Routes>
+    <div className="container">
+      <img className='container__logo' src={maponLogo} alt='logo'/>
+      <VehicleForm />
     </div>
   );
 }

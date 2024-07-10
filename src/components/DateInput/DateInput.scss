@@ -1,0 +1,38 @@
+.form__period {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  &-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &-calendar {
+    width: 380px;
+    display: grid;
+    grid-template-columns: repeat(2, 186px);
+    gap: 8px;
+    &-custom {
+      z-index: 5;
+      position: absolute;
+      width: 300px;
+    }
+    &-title{
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 19px;
+    }
+    &-wrapper {
+      display: block;
+      width: 170px;
+      height: 16px;
+      padding: 6px 6px 6px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      border: 1px solid #DCDEE0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
